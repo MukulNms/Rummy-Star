@@ -13,11 +13,7 @@ public class SpinWheelWithoutPlugin : MonoBehaviour
 
     public AnimationCurve animationCurve;
 
-    [SerializeField] private GameObject outerWheel;
-    
-
-
-
+    [SerializeField] private GameObject wheel;
     [SerializeField] private GameObject _content;
     [SerializeField] private GameObject[] _awardImages;
     public static SpinWheelWithoutPlugin instane;
@@ -35,7 +31,7 @@ public class SpinWheelWithoutPlugin : MonoBehaviour
     public float minValue;
     private void Start()
     {
-        outerWheel = gameObject;
+        wheel = gameObject;
         
 
         lastImageIndex = 0;
@@ -84,7 +80,7 @@ public class SpinWheelWithoutPlugin : MonoBehaviour
                 _awardImages[currentImageIndex].transform.position = new Vector2(distanceLeft,
                      _awardImages[currentImageIndex].transform.position.y);
                 //rotate wheel
-                outerWheel.transform.Rotate(0f, 0f, -angle);
+                wheel.transform.Rotate(0f, 0f, -angle);
                 
 
                 temp += Math.Abs(angle);
@@ -103,7 +99,7 @@ public class SpinWheelWithoutPlugin : MonoBehaviour
 
     void AfterSpin(int wheelNo)
     {
-        outerWheel.transform.eulerAngles = new Vector3(0, 0, angles[wheelNo]);
+        wheel.transform.eulerAngles = new Vector3(0, 0, angles[wheelNo]);
        
 
         isSpinning = false;
@@ -174,7 +170,7 @@ public class SpinWheelWithoutPlugin : MonoBehaviour
     public void SetWheelInitialAngle(int wheelNo, string xfactor)
     {
         print("set initialangle ");
-        outerWheel.transform.eulerAngles = new Vector3(0, 0, angles[wheelNo]);
+        wheel.transform.eulerAngles = new Vector3(0, 0, angles[wheelNo]);
         
 
         lastImageIndex = 0;
@@ -242,11 +238,11 @@ public class SpinWheelWithoutPlugin : MonoBehaviour
     {
         if (isSpinning)
         {
-            iTween.Stop(outerWheel);
+            iTween.Stop(wheel);
             
 
             iTween.Stop(_awardImages[currentImageIndex], true);
-            outerWheel.transform.eulerAngles = new Vector3(0, 0, 0);
+            wheel.transform.eulerAngles = new Vector3(0, 0, 0);
            
             lastImageIndex = currentImageIndex;
 

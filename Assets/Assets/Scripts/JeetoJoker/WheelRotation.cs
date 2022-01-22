@@ -50,13 +50,13 @@ public class WheelRotation : MonoBehaviour
             }
             speed = 0;
             spin = false;
+           
+
         }
 
     }
     public void spin_button()
     {
         spin = true;
-
-
     }
 }
